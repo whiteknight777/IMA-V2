@@ -3,6 +3,10 @@
     text-transform: uppercase;
 }
 
+.toLower{
+    text-transform: lowercase;
+}
+
 li.nav-item.dropdown i.mdi{
     padding-right: 10px;
 }
