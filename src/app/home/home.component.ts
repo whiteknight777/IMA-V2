@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BarChart } from '../_services/barChart.service'
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  barChart: BarChart;
+  labels: Array<string>;
+  chartTitle: string;
+  data: Array<number>;
 
-  constructor() { }
+  constructor() {
+    // Bar chart data
+    this.labels = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+    this.chartTitle = 'Nombre d\'absences de l\'année';
+    this.data = [2, 10, 3, 1, 5, 1, 2, 1, 3, 15, 5, 7];
+    this.barChart = new BarChart(this.labels, this.chartTitle, this.data)
+  }
 
   ngOnInit() {
     // Calendrier
@@ -17,57 +28,24 @@ export class HomeComponent implements OnInit {
       firstDayOfTheWeek: 1
     });
 
-    this.barChart();
+    this.newBarChart();
 
   }
 
-  barChart() {
-    let data = {
-      labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-      datasets: [{
-        label: 'Nombre d\'absences de l\'année',
-        data: [2, 10, 3, 0, 5, 1, 0, 0, 0, 15, 5],
-        background: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
-      }]
-    };
-
-    let options = {
-      sclale: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      },
-      legend: {
-        display: true
-      },
-      elements: {
-        point: {
-          radius: 0
-        }
-      }
-    };
-
-    let canvas = document.querySelector('#lineChart');
+  // Initialize a new chart
+  newBarChart() {
+    let canvas = document.querySelector("#barChart");
     if (canvas) {
-      // let lineChartCanvas = canvas.get(0).getContext('2d');
+      let data = this.barChart.prepareData();
       new Chart(canvas, {
         type: 'bar',
         data: data,
-        options: options
+        options: this.barChart.options
       });
     }
   }
+
+
+
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,99 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  tabs = true;
+  secondMenu = [
+    {
+      title: 'Tableau de bord',
+      url: '/dashboard',
+      icon: 'mdi mdi-view-dashboard',
+      active: true
+    },
+    {
+      title: 'Historique activités',
+      url: '/',
+      icon: 'mdi mdi-format-list-bulleted',
+      active: false
+    },
+    {
+      title: 'Historique droits',
+      url: '/',
+      icon: 'mdi mdi-book-multiple',
+      active: false
+    },
+    {
+      title: 'Arrêt de travail',
+      url: '/',
+      icon: 'mdi mdi-block-helper',
+      active: false
+    }
+  ];
+  firstMenu = [
+    {
+      title: 'Tableau de bord',
+      url: '/dashboard',
+      icon: 'mdi mdi-view-dashboard',
+      active: true
+    },
+    {
+      title: 'Nouveau congé',
+      url: '/nouveau-conge',
+      icon: 'mdi mdi-airplane',
+      active: false
+    },
+    {
+      title: 'Nouvelle permission',
+      url: '/',
+      icon: 'mdi mdi-comment-text',
+      active: false
+    }
+  ];
+  menu;
+  currentRoute;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) {
+    this.menu = this.firstMenu
+    this.currentRoute = this.router.url
+  }
+
+
 
   ngOnInit() {
+    console.log(this.router.url)
+    this.activateCurrentRoute()
+  }
+
+  activateCurrentRoute() {
+    this.firstMenu.forEach((el) => {
+      if (el.url == this.currentRoute) {
+        el.active = true
+      } else {
+        el.active = false
+      }
+    })
+
+    this.secondMenu.forEach((el) => {
+      if (el.url == this.currentRoute) {
+        el.active = true
+      } else {
+        el.active = false
+      }
+    })
+
+  }
+
+  menuPrincipal($event) {
+    $event.preventDefault();
+    this.tabs = true;
+    this.menu = this.firstMenu
+  }
+
+  menuSecondaire($event) {
+    $event.preventDefault();
+    this.tabs = false;
+    this.menu = this.secondMenu;
   }
 
 }

@@ -7,7 +7,7 @@
                 <div class="container">
                     <div class="row mb-4">
                         <div class="col-12 d-flex align-items-center justify-content-between">
-                            <h4 class="page-title">Interface salarié</h4>
+                            <h4 class="page-title">Bienvenue sur votre Tableau de bord !</h4>
                             <div class="d-flex align-items-center">
                                 <div class="wrapper mr-4 d-none d-sm-block">
                                     <p class="mb-0">Lundi 04
@@ -29,10 +29,6 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pb-2">
                                                 <h5>Droits à congés</h5>
-                                                <i class="mdi mdi-tooltip-outline-plus"></i>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="text-muted">Restant</p>
                                                 <p class="text-muted">: 40</p>
                                             </div>
                                             <div class="progress progress-md">
@@ -46,10 +42,6 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pb-2">
                                                 <h5>Solde permission</h5>
-                                                <i class="icon-pie-chart"></i>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="text-muted">Disponible</p>
                                                 <p class="text-muted">: 10</p>
                                             </div>
                                             <div class="progress progress-md">
@@ -63,10 +55,6 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pb-2">
                                                 <h5>Congés consommés</h5>
-                                                <i class="icon-wallet"></i>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="text-muted">Total</p>
                                                 <p class="text-muted">: 54</p>
                                             </div>
                                             <div class="progress progress-md">
@@ -80,10 +68,6 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between pb-2">
                                                 <h5>Permissions accordées</h5>
-                                                <i class="mdi mdi-routes"></i>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="text-muted">Total</p>
                                                 <p class="text-muted">: 143</p>
                                             </div>
                                             <div class="progress progress-md">
@@ -140,7 +124,7 @@
                                         <div id="product-sales-legend"></div>
                                     </div>
                                     <!-- <canvas height="150" id="product-sales"></canvas> -->
-                                    <canvas height="150" id="lineChart"></canvas>
+                                    <canvas height="150" id="barChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -262,15 +246,7 @@
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:assets/partials/_footer.html -->
-                <footer class="footer">
-                    <div class="container-fluid clearfix">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-                            <a href="http://urbanui.com/" target="_blank">UrbanUI</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-                            <i class="mdi mdi-heart-outline text-danger"></i>
-                        </span>
-                    </div>
-                </footer>
+                <app-footer></app-footer>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->

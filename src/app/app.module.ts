@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HeaderComponent } from './header/header.component';
+import { NewCongeComponent } from './new-conge/new-conge.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     HomeComponent,
     NotfoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    NewCongeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -16,3 +16,7 @@ li.nav-item.dropdown i.mdi{
     padding: 3px;
     border-radius: 44%;
 }
+
+.footer .footer-link{
+    padding: 0 10px;
+}
