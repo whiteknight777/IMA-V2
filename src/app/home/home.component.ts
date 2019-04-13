@@ -30,6 +30,14 @@ export class HomeComponent implements OnInit {
 
     this.newBarChart();
 
+    // Launch loader
+    this.launchLoader();
+    let call = function () {
+      document.querySelector('.loader').setAttribute('style', 'display:none');
+      document.querySelector('.container-scroller').setAttribute('style', 'display:block');
+    }
+    setTimeout(call, 3000)
+
   }
 
   // Initialize a new chart
@@ -46,6 +54,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-
+  launchLoader() {
+    document.querySelector('.loader').setAttribute('style', 'display:block');
+    document.querySelector('.container-scroller').setAttribute('style', 'display:block; opacity:.6');
+  }
 
 }
