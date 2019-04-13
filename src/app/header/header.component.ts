@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+// Addons
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-header',
@@ -101,6 +102,31 @@ export class HeaderComponent implements OnInit {
     $event.preventDefault();
     this.tabs = false;
     this.menu = this.secondMenu;
+  }
+
+  logout() {
+    swal({
+      text: "Voulez-vous vraiment vous déconnecter?",
+      icon: "warning",
+      dangerMode: true,
+      buttons: {
+        cancel: "Annuler",
+        confirm: {
+          text: "Confirmer",
+        },
+      },
+    }).then((value) => {
+      if (value) {
+        // Suppression des sessions utilisateurs
+        this.launchLoader();
+        this.router.navigate(['/login'])
+      }
+    });
+  }
+
+  launchLoader() {
+    document.querySelector('.loader').setAttribute('style', 'display:block');
+    document.querySelector('.container-scroller').setAttribute('style', 'display:block; opacity:.6');
   }
 
 }

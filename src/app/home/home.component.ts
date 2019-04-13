@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       document.querySelector('.loader').setAttribute('style', 'display:none');
       document.querySelector('.container-scroller').setAttribute('style', 'display:block');
     }
-    setTimeout(call, 3000)
+    setTimeout(call, 1500)
 
   }
 
